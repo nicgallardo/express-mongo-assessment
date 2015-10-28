@@ -8,11 +8,11 @@ block content
           h3
             p= team.teamCity
             span
-              a(href="teams/#{team._id}")= team.teamName
+              a(href="/teams/#{team._id}")= team.teamName
           p Coach: 
             span
-              a(href="coaches/#{team.coachId}")= team.teamCoach
+              a(href="/coaches/#{team.coachId}")= team.teamCoach
           p
-            a(href="/roster/#{team._id}") Roster
+            a(href="/add-athlete/#{team._id}") Add Athlete
             
             

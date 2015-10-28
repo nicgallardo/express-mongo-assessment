@@ -1,0 +1,129 @@
+extends layout
+
+block content
+  div(class="row")
+    div(class="col-md-6 col-md-offset-3")      
+      div(class="jumbotron text-center")
+        h3
+          p= team.teamCity
+          span
+            a(href="/teams/#{team._id}")= team.teamName
+        p Coach: 
+          span
+            a(href="/coaches/#{team.coachId}")= team.teamCoach
+  div(class="row")
+    div(class="col-md-6 col-md-offset-3")
+      div(class="jumbotron text-center")
+        h3 Add Team Member
+        if errors
+          
+          div(class="alert alert-danger col-md-8 col-md-offset-2 text-left" role="alert")
+            h4= errorMsg
+              each error in errors
+                span(class="glyphicon glyphicon-exclamation-sign" aria-hidden="true")
+                  span= error
+        form(action="/createplayer" method="post")
+          p
+            label(for="firstName") First Name
+              input(type="text" id="firstName" name="firstName")
+          p
+            label(for="lastName") Last Name
+              input(type="text" id="lastName" name="lastName")
+          p
+          div(class="row")
+            h3 Player Number
+            div(class="col-md-offset-4 col-md-2")
+              select(multiple class='form-control' name="numberIndexZero")
+                option 0
+                option 1
+                option 2
+                option 3
+                option 4
+                option 5
+                option 6
+                option 7
+                option 8
+                option 9
+            div(class="col-md-2")
+              select(multiple class='form-control' name="numberIndexOne")
+                option 0
+                option 1
+                option 2
+                option 3
+                option 4
+                option 5
+                option 6
+                option 7
+                option 8
+                option 9
+          div(class="row")
+            h3 Height
+            div(class="col-md-offset-4 col-md-2")
+              select(multiple class='form-control' name="feet")
+                option 5'
+                option 6'
+                option 7'
+            div(class="col-md-2")
+              select(multiple class='form-control' name="inches")
+                option 0"
+                option 1"
+                option 2"
+                option 3"
+                option 4"
+                option 5"
+                option 6"
+                option 7"
+                option 8"
+                option 9"
+                option 10"
+                option 11"
+          div(class="row")
+            h3 Weight
+            div(class="col-md-offset-3 col-md-2")
+              select(multiple class='form-control' name="weightOne")
+                option 1
+                option 2
+                option 3
+            div(class="col-md-2")
+              select(multiple class='form-control' name="weightTwo")
+                option 0
+                option 1
+                option 2
+                option 3
+                option 4
+                option 5
+                option 6
+                option 7
+                option 8
+                option 9
+            div(class="col-md-2")
+              select(multiple class='form-control' name="weightThree")
+                option 0
+                option 1
+                option 2
+                option 3
+                option 4
+                option 5
+                option 6
+                option 7
+                option 8
+                option 9
+          div(class="row")
+            h3 Position
+            div(class="col-md-offset-3 col-md-6")
+              select(multiple class='form-control' name="position")
+                option Point Guard
+                option Shooting Guard
+                option Power Forward
+                option Small Forward
+                option Center
+          div(class="row")
+            div(class="col-md-offset-3 col-md-6")
+              h4 Must Select Team ID Below
+              select(multiple class="form-control" name="teamId")
+                option(selected)= team._id
+          div(class="row")
+            button(type="submit" value="submit") Create Starting Lineup
+        
+      
+            

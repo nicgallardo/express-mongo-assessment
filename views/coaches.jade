@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  div(class="row")
+    div(class="col-md-3 col-md-offset-2")      
+      div(class="jumbotron text-center")
+        h3 Current Head Coaches
+        each coach in coaches
+          h4
+            a(href="/coaches/#{coach._id}")= coach.coachName
+            p= coach.teamCity  
+            span
+            span= coach.teamName

@@ -6,3 +6,10 @@ body {
 a {
   color: #00B7FF;
 }
+
+.bg-white {
+  background-color: white;
+}
+td {
+  width: 80px;
+}

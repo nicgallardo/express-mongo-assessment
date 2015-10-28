@@ -1,0 +1,27 @@
+extends layout
+
+block content
+  div(class="row")
+    div(class="col-md-6 col-md-offset-3")      
+        div(class="jumbotron text-center")
+          h3= team.teamName
+          p Coach: 
+            span
+              a(href="/coaches/#{team.coachId}")= team.teamCoach
+  div(class="row")
+    div(class="col-md-10 col-md-offset-1 jumbotron text-left")
+      h4 Team Roster
+      each athlete in athletes
+        table(class="table table-striped text-left")
+          tr
+            td
+              a(href="/athlete/#{athlete._id}")= athlete.firstName 
+            td
+              a(href="/athlete/#{athlete._id}")= athlete.lastName
+            td= athlete.number
+            td= athlete.position
+            td= athlete.height
+            td= athlete.weight
+            
+            
+            

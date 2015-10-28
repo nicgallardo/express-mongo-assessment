@@ -1,0 +1,31 @@
+extends layout
+
+block content
+  div(class="row")
+    div(class="col-md-3 col-md-offset-2")      
+      div(class="jumbotron text-center")
+        h3= athlete.firstName
+          span 
+          span= athlete.lastName
+        p= athlete.position
+        h4= athlete.teamCity
+          span  
+          span= athlete.teamName
+        h5 Coach: 
+          span= team.teamCoach
+    div(class="col-md-4")
+      div(class="text-center")
+        table
+          tr
+            th Number
+            th Position
+            th Height
+            th Weight
+          tr
+            td= athlete.number
+            td= athlete.position
+            td= athlete.height
+            td= athlete.weight
+    div(class="col-md-6 col-md-offset-3")
+      div(class="jumbotron")
+    
