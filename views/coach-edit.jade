@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  div(class="row")
+    div(class="col-md-6 col-md-offset-3")
+      div(class="jumbotron text-center")
+          h2 Edit #{coach.coachName}
+          form(action="/coach-edit" method="post")
+            p
+              label(for="coach") Coach Name
+                input(type='text' id="coach" name="coachName" placeholder="#{coach.coachName}")
+                input(type="hidden" name="teamId" value="#{coach.teamId}")
+                input(type="hidden" name="coachId" value="#{coach._id}")
+            button(type="submit" value="submit") Edit Coach #{coach.coachName}'s Profile
+          form(action="/coach/#{coach._id}/delete" method="post")
+            p
+            input(type="submit" value="DELETE #{coach.coachName}'s Profile'")
+          

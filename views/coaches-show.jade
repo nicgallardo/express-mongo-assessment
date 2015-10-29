@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  div(class="row")
+    div(class="col-md-3 col-md-offset-2")      
+      div(class="jumbotron text-center")
+          h4 Coach 
+            span
+            span= coach.coachName
+          p
+          if team
+            a(href="/teams/#{team._id}")= team.teamCity  
+            span  
+            span= team.teamName
+          else 
+            p Coach is available for hire.
+          p
+            a(href="/coaches/#{coach._id}/edit") Edit #{coach.coachName}

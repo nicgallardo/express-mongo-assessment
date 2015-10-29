@@ -4,17 +4,15 @@ block content
   div(class="row")
     div(class="col-md-6 col-md-offset-3")      
       div(class="jumbotron text-center")
-        h3
-          p= team.teamCity
-          span
-            a(href="/teams/#{team._id}")= team.teamName
-        p Coach: 
+        h3 
+          a(href="/teams/#{team._id}") #{team.teamCity} #{team.teamName}
+        p Coach:
           span
             a(href="/coaches/#{team.coachId}")= team.teamCoach
   div(class="row")
     div(class="col-md-6 col-md-offset-3")
       div(class="jumbotron text-center")
-        h3 Add Team Member
+        h2 Edit #{athlete.firstName} #{athlete.lastName}'s Profile
         if errors
           
           div(class="alert alert-danger col-md-8 col-md-offset-2 text-left" role="alert")
@@ -22,18 +20,19 @@ block content
               each error in errors
                 span(class="glyphicon glyphicon-exclamation-sign" aria-hidden="true")
                   span= error
-        form(action="/createplayer" method="post")
+        form(action="/athlete-edit" method="post")
           p
-            label(for="firstName") First Name
-              input(type="text" id="firstName" name="firstName")
+            label(for="firstName") Edit First Name
+              input(type="text" id="firstName" name="firstName" value="#{athlete.firstName}")
           p
-            label(for="lastName") Last Name
-              input(type="text" id="lastName" name="lastName")
+            label(for="lastName") Edit Last Name
+              input(type="text" id="lastName" name="lastName" value="#{athlete.lastName}")
           p
           div(class="row")
-            h3 Player Number
+            h4 Edit Player Number
+            p #{athlete.lastName}'s Current Number is #{athlete.number}.
             div(class="col-md-offset-4 col-md-2")
-              select(multiple class='form-control' name="numberIndexZero")
+              select(multiple class='form-control' name="numberIndexZero" selected="9")
                 option 0
                 option 1
                 option 2
@@ -57,7 +56,8 @@ block content
                 option 8
                 option 9
           div(class="row")
-            h3 Height
+            h3 Edit Height
+            p #{athlete.lastName}'s ccurrent height is #{athlete.height}.
             div(class="col-md-offset-4 col-md-2")
               select(multiple class='form-control' name="feet")
                 option 5'
@@ -79,6 +79,7 @@ block content
                 option 11"
           div(class="row")
             h3 Weight
+            p #{athlete.lastName}'s current weight is #{athlete.Weight}.
             div(class="col-md-offset-3 col-md-2")
               select(multiple class='form-control' name="weightOne")
                 option 1
@@ -110,6 +111,7 @@ block content
                 option 9
           div(class="row")
             h3 Position
+            p #{athlete.lastName} is currently listed as a #{athlete.position}.
             div(class="col-md-offset-3 col-md-6")
               select(multiple class='form-control' name="position")
                 option Point Guard
@@ -117,9 +119,16 @@ block content
                 option Power Forward
                 option Small Forward
                 option Center
-            input(type="hidden" name="teamId" value="#{team._id}")
           div(class="row")
-            button(type="submit" value="submit") Create Starting Lineup
-        
-      
-            
+            div(class="col-md-offset-3 col-md-6")
+              input(type="hidden" name="athleteId" value="#{athlete._id}")
+              input(type="hidden" name="teamId" value="#{athlete.teamId}")
+              input(type="hidden" name="teamName" value="#{athlete.teamName}")
+              h4 Must Select Team ID Below
+              select(multiple class="form-control" name="teamId")
+                //- option(selected)= team._id
+          div(class="row")
+            button(type="submit" value="submit") Edit #{athlete.firstName} #{athlete.lastName}'s profile
+        form(action="/athletes/delete/#{team._id}" method="post")
+          p
+          input(type="submit" value="DELET #{athlete.firstName} #{athlete.lastName}'s Profile'")

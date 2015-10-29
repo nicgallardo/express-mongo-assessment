@@ -8,11 +8,16 @@ block content
           span 
           span= athlete.lastName
         p= athlete.position
-        h4= athlete.teamCity
+        h4= team.teamCity
           span  
-          span= athlete.teamName
+          span= team.teamName
         h5 Coach: 
           span= team.teamCoach
+        p
+          a(href="/athlete/#{athlete._id}/edit") Edit 
+            span= athlete.firstName
+            span   
+            span= athlete.lastName
     div(class="col-md-4")
       div(class="text-center")
         table

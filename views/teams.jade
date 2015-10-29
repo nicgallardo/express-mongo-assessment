@@ -14,5 +14,9 @@ block content
               a(href="/coaches/#{team.coachId}")= team.teamCoach
           p
             a(href="/add-athlete/#{team._id}") Add Athlete
+          p
+            a(href="/teams/#{team._id}/edit") Edit
+              span  
+              span= team.teamName
             
             
